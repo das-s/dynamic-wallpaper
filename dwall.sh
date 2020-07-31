@@ -107,6 +107,7 @@ set_wallpaper() {
   fi
   if [ $FORMAT ]; then
 		$SETTER "$image.$FORMAT"
+        mkdir -p "$HOME/.cache/dwall/" 
 		return;
   fi
 }
@@ -127,9 +128,11 @@ usage() {
 	echo
 	echo -e $M"-s  style     name of theme/style."
 	echo -e $M"-o  style     Run once and exit, useful for schedulers (cron)."
+	echo -e $M"-p  set path  Sets the path in the cache in ~/.cache/dwall/currentimage"
 	echo -e $M"-h  help      show this usage/help message."
 	echo
  	echo -e $C"Styles Dir: $DIR/images"
+ 	echo -e $C"Exports the path of the current image in ~/.cache/dwall/currentimage."
 	echo
 	printf $G"Available styles/themes:  "
 	printf -- $Y'%s  ' "${available_styles[@]}"
